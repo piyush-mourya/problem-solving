@@ -1,4 +1,4 @@
-using sorting
+#using sorting
 
 int findDuplicate(vector<int>& nums) {
 	//Since we are sure that if only two elements are there, both will be same
@@ -13,10 +13,10 @@ int findDuplicate(vector<int>& nums) {
    	         }
      	   }
   	  }
-Time Complexity- O(nlogn)
-Space Complexity-O(1)
+#Time Complexity- O(nlogn)
+#Space Complexity-O(1)
 ---------------------------------------------------------------------------------------
-Using sets
+#Using sets
 
 int findDuplicate(vector<int>& nums) {
         set<int> s;
@@ -36,10 +36,10 @@ int findDuplicate(vector<int>& nums) {
         return -1;
     }
 
-Time complexity : O(n)
-Space Complexity : O(n)
+#Time complexity : O(n)
+#Space Complexity : O(n)
 ----------------------------------------------------------------------------------------
-Floyds Tortoise and Hare (Cycle Detection)
+#Floyds Tortoise and Hare (Cycle Detection)
 
  int findDuplicate(vector<int>& nums) {
         int hare = nums[0];
@@ -59,5 +59,5 @@ Floyds Tortoise and Hare (Cycle Detection)
          
     }
 
-Time complexity : O(n)
-Space Complexity : O(1)
+#Time complexity : O(n)
+#Space Complexity : O(1)

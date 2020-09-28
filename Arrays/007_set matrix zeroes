@@ -1,0 +1,42 @@
+set matrix zeroes
+https://leetcode.com/problems/set-matrix-zeroes/
+---------------------------------------------------------------------
+1st approach go through each element and set them as some other value so that we can accordingly change other elements.
+
+Time Complexity: O(n^3)
+Space Complexity: O(1)
+
+2nd approach is to have a row and a column array which keeps track of the rows and columns which are to be zeroed 
+
+Time Complexity: O(row*col)
+Space Complexity: O(row+col)
+
+Best approach
+
+void setZeroes(vector<vector<int>>& matrix) {
+    int col0 = 1, row = matrix.size(), col = matrix[0].size(); // col0 to tell if the first column is to be zeroed or not
+        
+        for(int i = 0 ; i < row ; i++){
+            if(matrix[i][0] == 0) col0 = 0; // if any of the first column elements are zero 
+            for(int j = 1 ; j < col ; j++){
+                if(matrix[i][j] == 0){
+                    matrix[i][0] = matrix[0][j] = 0; // setting cues in the first column and row to be zero
+                }
+            }
+        }
+        // we start the iteration backward
+        for(int i = row -1 ; i >= 0 ; i--){
+            for(int j = col-1 ; j >= 1; j--){ // we are not changing the first column as it is used for reference
+                if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                    matrix[i][j] = 0;
+                    
+                }
+            }
+            if(col0 == 0 ){
+                matrix[i][0] = 0;
+            }
+        }
+    }
+
+Time Complexity: O(row*col)
+Space Complexity: O(1)

@@ -1,0 +1,48 @@
+Merge two sorted Arrays without extra space 
+https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays/0
+---------------------------------------------------------------------------------------
+Using prebuilt functions
+
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+       copy(nums2.begin(),nums2.end(), nums1.begin()+m);
+        sort(nums1.begin(), nums1.end());
+    }
+
+Time Complexity: O((n+m)log(m+n))
+Space Complexity: O(1)
+--------------------------------------------------------------------------------------
+My Implementation
+
+ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+      int mptr = 0; //to keep track of index of first array
+      int nptr = 0; // to keep track of index of second array
+      int zeroptr = m;
+      // loop till the longer arrays end is reached
+      while(nptr < n){
+          // to bring zero in place of large number such that it can be filled with smaller number from nums2 arr
+          if(nums1[mptr] >= nums2[nptr]){
+              int tempzero = zeroptr;
+              while(zeroptr > mptr ){
+                  std::swap(nums1[zeroptr] , nums1[zeroptr-1]);
+                  zeroptr--;
+              }
+              zeroptr = tempzero + 1;
+              nums1[mptr] = nums2[nptr];
+              nptr++;
+              mptr++;
+          } else if( nums1[mptr] == 0 ){
+              nums1[mptr] = nums2[nptr];
+              mptr++;
+              nptr++;
+          }
+          else {
+              mptr++;
+          }
+          
+      }
+      // since negative numbers are not taken care of by this method we have to sort it
+        sort(nums1.begin(), nums1.end());
+        
+    }
+Time Complexity: O(n^2)
+Space Complexity: O(1)

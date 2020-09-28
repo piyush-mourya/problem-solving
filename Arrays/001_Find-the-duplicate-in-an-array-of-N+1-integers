@@ -40,7 +40,7 @@ int findDuplicate(vector<int>& nums) {
 
 // Time complexity : O(n)
 // Space Complexity : O(n)
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 // Floyds Tortoise and Hare (Cycle Detection)
 
  int findDuplicate(vector<int>& nums) {

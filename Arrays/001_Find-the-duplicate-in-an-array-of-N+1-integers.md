@@ -1,5 +1,5 @@
 // 1.Find the duplicate in an array of N+1 integers. 
-// https://leetcode.com/problems/find-the-duplicate-number/
+<a>https://leetcode.com/problems/find-the-duplicate-number/</a>
 // using sorting
 
 int findDuplicate(vector<int>& nums) {

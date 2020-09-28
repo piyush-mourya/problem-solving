@@ -1,0 +1,35 @@
+Kadane s Algorithm
+https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
+
+My implementation after watching the hint
+
+void kadane (vector<int> &arr, int n){
+    int max_so_far = INT_MIN ; // since it has to be compared with max_ending_here
+    int max_ending_here = 0 ; 
+    for(int i = 0 ; i < n ; i++){
+        max_ending_here += arr[i];
+        if(max_so_far < max_ending_here){
+            max_so_far = max_ending_here;
+        }
+        if(max_ending_here < 0){
+            max_ending_here = 0; // if sum till now goes below zero, restart
+        }
+        
+    }
+    cout<<max_so_far<<endl;
+}
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+=======> the hint
+Initialize:
+    max_so_far = 0
+    max_ending_here = 0
+
+Loop for each element of the array
+  (a) max_ending_here = max_ending_here + a[i]
+  (b) if(max_so_far < max_ending_here)
+            max_so_far = max_ending_here
+  (c) if(max_ending_here < 0)
+            max_ending_here = 0
+return max_so_far

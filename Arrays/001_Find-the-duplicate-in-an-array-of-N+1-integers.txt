@@ -1,0 +1,63 @@
+using sorting
+
+int findDuplicate(vector<int>& nums) {
+	//Since we are sure that if only two elements are there, both will be same
+       	 if(nums.size() == 2){
+       	     return nums[0];
+     	   }        
+     	   // sorting so that the duplicate numbers come together
+     	   sort(nums.begin() , nums.end());
+     	   for(int i = 1 ; i < nums.size() - 1 ; i++){
+       	     if(nums[i-1] == nums[i] || nums[i] == nums[i+1]){
+       	         return nums[i];
+   	         }
+     	   }
+  	  }
+Time Complexity- O(nlogn)
+Space Complexity-O(1)
+---------------------------------------------------------------------------------------
+Using sets
+
+int findDuplicate(vector<int>& nums) {
+        set<int> s;
+        if(nums.size() == 2){
+            return nums[0];
+        }   
+        // insert the first element as we start checking inside the loop     
+    s.insert(nums[0]);
+        for(int i = 1 ; i < nums.size() ; i++){
+        	//if and element is not found in a set its index is end index
+            if(s.find(nums[i]) != s.end()){
+                return nums[i]; // since this element is already present we get to know this is the duplicate
+            } else {
+                s.insert(nums[i]);
+            }
+        }
+        return -1;
+    }
+
+Time complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------------------------------------------
+Floyds Tortoise and Hare (Cycle Detection)
+
+ int findDuplicate(vector<int>& nums) {
+        int hare = nums[0];
+        int tortoise = nums[0];
+        //Phase 1: 1 round when they have their 1st intersection.
+        do {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+        } while(hare != tortoise);
+            //Phase 2: we will now start the tortoise from begining and they both will meet at the start of the cycle
+            tortoise = nums[0];
+        while( tortoise != hare){
+           tortoise = nums[tortoise];
+           hare = nums[hare];
+        }
+        return hare;
+         
+    }
+
+Time complexity : O(n)
+Space Complexity : O(1)

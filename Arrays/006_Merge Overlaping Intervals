@@ -1,0 +1,69 @@
+Merge Overlaping Intervals
+https://practice.geeksforgeeks.org/problems/overlapping-intervals/0
+
+#include<bits/stdc++.h>
+using namespace std;
+// structure to store start and end of interval
+struct Interval{
+    int start;
+    int end;
+};
+
+bool compareStart(Interval i1, Interval i2){
+    return (i1.start < i2.start);
+}
+
+void overlap(Interval interval[] , int n){
+    if(n<=0){
+        return; // if array is empty
+    }
+    
+    sort(interval, interval + n , compareStart); //sorting according to start of interval quiery
+    
+    int index = 0;  // since it will be used to compare with the next interval 
+      
+    for (int i=1; i<n; i++)  
+    {  
+        
+        if (interval[index].end >=  interval[i].start)  // if they overlap
+        {  
+                 
+            interval[index].end = max(interval[index].end, interval[i].end);  //till the end of indexes whichever longer
+            interval[index].start = min(interval[index].start, interval[i].start);  // till the start of indexes whichever shorter
+        }  
+        else { 
+            index++; 
+            interval[index] = interval[i];  
+        }     
+    }  
+    for (int i = 0; i <= index; i++)  {
+        cout  << interval[i].start << " " << interval[i].end << " ";
+}
+    cout<<endl;
+}
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	for(int i = 0 ; i < t ; i++){
+	    int n;
+	    cin>>n;
+	    Interval interval[n];
+	    for(int i = 0 ; i < n ; i++){
+	        Interval inte;
+	       for(int j = 0 ; j < 2 ; j++){
+	           if(j == 0){
+	           cin>>inte.start;
+	           } else {
+	               cin>>inte.end;
+	           }
+	       }
+	       interval[i] = inte;
+	    }
+	overlap(interval, n ) ;   
+	}
+	
+	return 0;
+}

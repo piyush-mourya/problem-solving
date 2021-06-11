@@ -85,6 +85,39 @@ public class Source {
 		}
 		return ans;
 	}
+	
+	//method 3 couple method
+	private static MinMax findMinMaxCouple(int n, int[] arr) {
+		MinMax minmax = new MinMax();
+		if(n%2 == 0) {
+			minmax.setMin(arr[0] <= arr[1] ? arr[0] : arr[1]);
+			minmax.setMax(arr[0] >= arr[1] ? arr[0] : arr[1]);
+		} else {
+			minmax.setMin(arr[0]);
+			minmax.setMax(arr[0]);
+		}
+		
+		int i = 2;
+		while(i<n-1) {
+			if(arr[i] > arr[i+1]) {
+				if(arr[i] >= minmax.getMax()) {
+					minmax.setMax(arr[i]);
+				}
+				if(arr[i+1] <= minmax.getMin()) {
+					minmax.setMin(arr[i+1]);
+				}
+			} else {
+				if(arr[i+1] >= minmax.getMax()) {
+					minmax.setMax(arr[i+1]);
+				}
+				if(arr[i] <= minmax.getMin()) {
+					minmax.setMin(arr[i]);
+				}
+			}
+			i = i+2;
+		}
+		return minmax;
+	}
 }
 
 class MinMax{

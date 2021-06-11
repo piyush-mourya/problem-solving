@@ -1,6 +1,6 @@
 //package stu.piyush.learning;
 // https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
-// method 1: using linear searching
+
 import java.util.Scanner;
 
 public class Source {
@@ -24,7 +24,7 @@ public class Source {
 		System.out.println(minmax);
 		
 	}
-
+	// method 1: using linear searching
 	private static MinMax findMinMax(int[] arr, int n) {
 		//int ans[] = new int[2];
 		MinMax minmax = new MinMax();
@@ -52,6 +52,38 @@ public class Source {
 			}
 		}
 		return minmax;
+	}
+	
+	// method 2 tournament method
+	private static MinMax findMinMaxTournament(int n, int i, int j, int[] arr) {
+		if(i==j) {
+			return new MinMax(arr[i],arr[j]);
+		}
+		
+		if(i+1 == j) {
+			int min, max;
+			min = arr[i] >= arr[j] ? arr[j] : arr[i];
+			max = arr[i] >= arr[j] ? arr[i] : arr[j];
+			return new MinMax(min,max);
+		}
+		int mid = (j+i)/2;
+		MinMax m1 = new MinMax();
+		MinMax m2 = new MinMax();
+		MinMax ans = new MinMax();
+		m1 = findMinMaxTournament(n, i, mid, arr);
+		m2 = findMinMaxTournament(n, mid+1, j, arr);
+		if(m1.getMin() <= m2.getMin()) {
+			ans.setMin(m1.getMin());
+		} else {
+			ans.setMin(m2.getMin());
+		}
+		
+		if(m1.getMax() <= m2.getMax()) {
+			ans.setMax(m2.getMax());
+		} else {
+			ans.setMax(m1.getMax());
+		}
+		return ans;
 	}
 }
 

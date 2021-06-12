@@ -84,3 +84,28 @@ class GFG {
 }
 
   // } Driver Code Ends
+// method 2 using pointers single pass
+public static void sort012(int a[], int n)
+    {
+        int size = a.length;
+        int zero = 0;
+        int one = 0;
+        int two = size - 1;
+        int i = 0;
+        while (one <= two){
+            if(a[one] == 0){
+                int temp = a[one];
+                a[one] = a[zero];
+                a[zero] = temp;
+                one++;
+                zero++;
+            } else if(a[one] == 2){
+                int temp = a[one];
+                a[one] = a[two];
+                a[two] = temp;
+                two--;
+            } else {
+                one++;
+            }
+        }
+    }

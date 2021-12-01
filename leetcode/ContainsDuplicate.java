@@ -15,3 +15,20 @@ class Solution {
     }
 }
 
+// Using HashSet
+// https://www.geeksforgeeks.org/hashset-in-java/
+
+class Solution1 {
+    public boolean containsDuplicate(int[] nums) {
+        int size = nums.length;
+        HashSet<Integer> uniqueEle = new HashSet<Integer>();
+        for(int i = 0 ; i < size ; i++ ){
+            uniqueEle.add(nums[i]);
+        }
+        if(size == uniqueEle.size()){
+            return false;
+        } else {
+            return true;
+        }
+    }
+}

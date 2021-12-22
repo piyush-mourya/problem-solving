@@ -66,4 +66,23 @@ class Solution {
         return sign * (int)revInt;
     }
     
+    // further optimization
+    public int reverse(int x) {
+        int revInt = 0;
+        int sign = 1;
+        if(x < 0){
+            sign = -1;
+            x = -x;
+        }
+        while(x > 0){
+            int digit = x % 10 ;
+            if(revInt > (Integer.MAX_VALUE/10)){
+                return 0;
+            }
+            revInt = revInt * 10 + digit;
+            x = x/10;
+        }
+        return sign * revInt;
+    }
+    
 }

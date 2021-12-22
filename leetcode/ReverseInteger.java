@@ -46,5 +46,24 @@ class Solution {
         }
         return sign * (int)revInt;
     }
-
+    
+    // code refactor
+     public int reverse3(int x) {
+        long revInt = 0;
+        int sign = 1;
+        if(x < 0){
+            sign = -1;
+            x = -x;
+        }
+        while(x > 0){
+            int digit = x % 10 ;
+            revInt = revInt * 10 + digit;
+            x = x/10;
+        }
+        if(revInt > Integer.MAX_VALUE){
+            return 0;
+        }
+        return sign * (int)revInt;
+    }
+    
 }

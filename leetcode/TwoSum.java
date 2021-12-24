@@ -15,4 +15,19 @@ class Solution {
         }
         return ans;
     }
+    
+    // optimized solution
+    public int[] twoSum1(int[] nums, int target) {
+        int ans[] = new int[2];
+        int size = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0 ; i < size ; i++){
+            if(map.containsKey(target - nums[i])){
+                ans[1] = i;
+                ans[0] = map.get(target - nums[i]);
+            }
+            map.put(nums[i], i);
+        }
+        return ans;
+    }
 }

@@ -5,6 +5,7 @@ class Solution {
         int min = Integer.MAX_VALUE;
         int max_profit = 0;
         for(int  i = 0 ; i < prices.length ; i++){
+            // this keeps the minimum price till now
             if(prices[i] < min){
                 min = prices[i];
             }

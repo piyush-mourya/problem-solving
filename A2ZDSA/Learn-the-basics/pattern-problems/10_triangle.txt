@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/triangle-pattern-1661718013/1
+
+class Solution {
+
+    void printTriangle(int n) {
+        // first half
+        for(int i = 1 ; i <= n ; i++){
+            for(int j = i; j > 0 ; j--){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        
+        // second half
+        for(int i = 1 ; i < n ; i++){
+            for(int j = n - i ; j > 0 ; j--){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}

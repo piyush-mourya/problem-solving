@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/triangle-pattern-1662285334/1
+
+class Solution {
+
+    void printTriangle(int n) {
+        char start = 'A';
+        for(int i = 1 ; i <= n ; i++){
+            for(int j = i ; j > 0 ; j--){
+                System.out.print(start);
+            }
+            start++;
+            System.out.println();
+        }
+    }
+}
+
+output:
+
+A
+BB
+CCC
+DDDD
+EEEEE

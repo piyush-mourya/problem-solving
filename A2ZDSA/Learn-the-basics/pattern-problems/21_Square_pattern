@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/square-pattern-1662287714/1
+
+class Solution {
+
+    void printSquare(int n) {
+        for(int i = 1 ; i <= n ; i++){
+            for(int j = n ; j > 0 ; j--){
+                if(i == 1 || i == n){
+                    System.out.print("*");
+                } else {
+                    if(j == 1 || j == n){
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+Output:
+
+****
+*  *
+*  *
+****
